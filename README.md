@@ -15,7 +15,7 @@ restassuredlearning/
 │           ├── base/      # Base test configuration
 │           │   └── BaseTest.java  # Base test class with common setup
 │           └── testingAPIs/       # API test classes
-│               └── PostUserTest.java  # User creation API test
+│               └── GetUserTest.java  # User  API test
 ├── .vscode/               # VS Code configuration
 └── target/                # Compiled files and test reports
 ```
