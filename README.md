@@ -12,7 +12,11 @@ restassuredlearning/
 │   │   └── java/          # Main source code
 │   └── test/
 │       └── java/          # Test source code
-│           └── FirstTest.java  # Sample REST API test
+│           ├── base/      # Base test configuration
+│           │   └── BaseTest.java  # Base test class with common setup
+│           └── testingAPIs/       # API test classes
+│               └── PostUserTest.java  # User creation API test
+├── .vscode/               # VS Code configuration
 └── target/                # Compiled files and test reports
 ```
 
@@ -29,13 +33,13 @@ The project uses the following main dependencies:
    - Provides annotations for test methods
    - Offers better test organization and reporting
 
-3. **Hamcrest (v2.2)**
-   - Library of matcher objects for test assertions
-   - Used for creating flexible test assertions
+3. **JSON Path (v5.3.0)**
+   - Used for parsing and validating JSON responses
+   - Provides powerful JSON querying capabilities
 
 ## Prerequisites
 
-- Java JDK 17 or higher
+- Java JDK 11 or higher
 - Maven 3.6 or higher
 - Internet connection (for downloading dependencies)
 
@@ -61,46 +65,54 @@ mvn test
 
 ### Run specific test class
 ```bash
-mvn test -Dtest=FirstTest
+mvn test -Dtest=PostUserTest
 ```
 
 ### Run specific test method
 ```bash
-mvn test -Dtest=FirstTest#testFirst
+mvn test -Dtest=PostUserTest#createUser
 ```
 
 ## Test Details
 
-### FirstTest.java
-This test class demonstrates a basic REST API test:
-- Makes a GET request to `https://reqres.in/api/users/2`
-- Verifies the response status code is 200
-- Uses TestNG annotations for test execution
+### BaseTest.java
+- Base class for all test classes
+- Configures the base URI for API requests
+- Sets up common test configurations
+
+### PostUserTest.java
+This test class demonstrates:
+- User authentication with the API
+- Creating a new user
+- Verifying response status code and body
+- Using TestNG annotations for test execution
 
 ## Project Configuration
 
 The project is configured with:
-- Java 17 as the target version
+- Java 11 as the target version
 - Maven as the build tool
 - TestNG as the test runner
 - REST Assured for API testing
+- Surefire plugin (v3.0.0) for test execution
 
 ## Additional Notes
 
 - The project uses reqres.in as a sample API for testing
-- All tests are in the `src/test/java` directory
+- All tests are organized in the `src/test/java` directory
 - Test reports are generated in the `target/surefire-reports` directory after test execution
+- Base test configuration is centralized in the `base` package
 
 ## Troubleshooting
 
 If you encounter any issues:
 
-1. Ensure Java 17 is installed and JAVA_HOME is set correctly
+1. Ensure Java 11 is installed and JAVA_HOME is set correctly
 2. Verify Maven is installed and accessible from command line
 3. Check internet connection for dependency downloads
 4. Clear Maven cache if dependency issues persist:
    ```bash
    mvn clean
-   rm -rf ~/.m2/repository/com/abhinav/restassured
+   rm -rf ~/.m2/repository/com/restassured
    mvn install
    ``` 
