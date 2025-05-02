@@ -1,1 +1,4 @@
 /Users/abhinav/Documents/restassuredlearning/src/test/java/FirstTest.java
+/Users/abhinav/Documents/restassuredlearning/src/test/java/base/BaseTest.java
+/Users/abhinav/Documents/restassuredlearning/src/test/java/testingAPIs/AuthUserTest.java
+/Users/abhinav/Documents/restassuredlearning/src/test/java/testingAPIs/GetUserTest.java
